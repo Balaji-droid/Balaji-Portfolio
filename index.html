@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+
+        BalajiPortfolio.com</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#4F46E5',secondary:'#8B5CF6'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #4F46E5;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid #4F46E5;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #4F46E5 }
+        }
+        
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .skill-progress {
+            transition: width 1s ease-in-out;
+        }
+        
+        .social-icon {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            color: #4F46E5;
+        }
+        
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .custom-checkbox {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .custom-checkbox.checked {
+            background-color: #4F46E5;
+            border-color: #4F46E5;
+        }
+        
+        .custom-checkbox.checked::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 6px;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        .custom-radio {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 2px solid #d1d5db;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+        
+        .custom-radio.checked {
+            border-color: #4F46E5;
+        }
+        
+        .custom-radio.checked::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 8px;
+            height: 8px;
+            background-color: #4F46E5;
+            border-radius: 50%;
+        }
+        
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+        
+        .custom-switch-track {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e5e7eb;
+            border-radius: 34px;
+            transition: 0.4s;
+        }
+        
+        .custom-switch-thumb {
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+        
+        .custom-switch.checked .custom-switch-track {
+            background-color: #4F46E5;
+        }
+        
+        .custom-switch.checked .custom-switch-thumb {
+            transform: translateX(20px);
+        }
+        
+        .custom-range {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        .custom-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #4F46E5;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .custom-range::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: #4F46E5;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .counter {
+            display: inline-block;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white bg-opacity-90 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex items-center justify-between">
+                <a href="#home" class="text-2xl font-['Pacifico'] text-primary">Balaji</a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-800 hover:text-primary font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-800 hover:text-primary font-medium">About</a>
+                    <a href="#projects" class="nav-link text-gray-800 hover:text-primary font-medium">Projects</a>
+                    <a href="#skills" class="nav-link text-gray-800 hover:text-primary font-medium">Skills</a>
+                    <a href="#contact" class="nav-link text-gray-800 hover:text-primary font-medium">Contact</a>
+                </div>
+                
+                <a href="#contact" class="hidden md:block bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-all whitespace-nowrap">Hire Me</a>
+                
+                <button id="mobile-menu-button" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white py-4 px-6 hidden">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-gray-800 hover:text-primary font-medium">Home</a>
+                <a href="#about" class="text-gray-800 hover:text-primary font-medium">About</a>
+                <a href="#projects" class="text-gray-800 hover:text-primary font-medium">Projects</a>
+                <a href="#skills" class="text-gray-800 hover:text-primary font-medium">Skills</a>
+                <a href="#contact" class="text-gray-800 hover:text-primary font-medium">Contact</a>
+                <a href="#contact" class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-all inline-block text-center whitespace-nowrap">Hire Me</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20" style="background-image: url('https://readdy.ai/api/search-image?query=professional%2520modern%2520gradient%2520background%2520with%2520subtle%2520patterns%2520in%2520light%2520blue%2520and%2520purple%2520tones%252C%2520abstract%2520digital%2520design%2520with%2520soft%2520geometric%2520shapes%252C%2520perfect%2520for%2520tech%2520portfolio%2520background%252C%2520clean%2520and%2520minimal%2520style%252C%2520high%2520quality%2520digital%2520art&width=1920&height=1080&seq=hero1&orientation=landscape'); background-size: cover; background-position: center;">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center w-full">
+                <div class="md:w-1/2 z-10">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 font-poppins">Hi, I'm <span class="text-primary">Balaji Kamalakannan</span></h1>
+                    <div class="typewriter mb-6 text-xl md:text-1xl text-gray-700 font-medium">AWS Certified Cloud Practitioner | Aspiring IT Professional</div>
+                    <p class="text-gray-700 text-lg mb-8 max-w-lg">I craft responsive websites where technology meets creativity. Transforming ideas into digital experiences that users love.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects" class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-all whitespace-nowrap">View My Work</a>
+                        <a href="Resume.pdf" class="border-2 border-primary text-primary px-8 py-3 !rounded-button font-medium hover:bg-primary hover:text-white transition-all whitespace-nowrap">Download CV</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-primary rounded-full opacity-10 blur-xl transform -translate-x-4 translate-y-4"></div>
+                        <img src="https://imagizer.imageshack.com/img922/5499/stcwD8.jpg" alt="Balaji" class="relative z-10 rounded-full w-64 h-64 md:w-80 md:h-80 object-cover object-top border-4 border-white shadow-xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-poppins">About Me</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-2/5">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-primary rounded-lg opacity-10 blur-md transform translate-x-4 translate-y-4"></div>
+                        <img src="https://readdy.ai/api/search-image?query=professional%2520full%2520body%2520portrait%2520of%2520a%2520young%2520male%2520developer%2520working%2520on%2520laptop%2520in%2520modern%2520office%2520environment%252C%2520casual%2520smart%2520attire%252C%2520natural%2520lighting%252C%2520high%2520quality%2520professional%2520photography%252C%2520soft%2520focus%2520background&width=600&height=800&seq=about1&orientation=portrait" alt="About John Anderson" class="relative z-10 rounded-lg w-full h-auto object-cover object-top shadow-lg">
+                    </div>
+                </div>
+                
+                <div class="md:w-3/5">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 font-poppins">Who am I?</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed">I’m Balaji, an enthusiastic IT graduate and aspiring Cloud Engineer with hands-on experience at JIT Global and AWS Cloud Practitioner certification. I’m passionate about cloud computing, operations, and using technology to create real-world impact. My goal is to grow into a role where I can contribute, learn, and lead in the cloud and IT domain.</p>
+                    
+                    <p class="text-gray-700 mb-8 leading-relaxed"> </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <div class="text-4xl font-bold text-primary mb-2 counter" data-target="5">5 Months</div>
+                            <p class="text-gray-700">Experience</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <div class="text-4xl font-bold text-primary mb-2 counter" data-target="50">0</div>
+                            <p class="text-gray-700">Projects Completed</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm mb-8">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-4">Education</h4>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full">
+                                <i class="ri-graduation-cap-line text-primary ri-lg"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-gray-900">B.Tech in Information Technology</h5>
+                                <p class="text-gray-700">Jeppiaar Institute Of Technology, 2021-2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-poppins">My Projects</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-8"></div>
+                <p class="text-gray-700 max-w-2xl mx-auto">Explore my latest work. Each project represents a unique challenge and solution.</p>
+            </div>
+            
+            <div class="flex justify-center mb-10">
+                <div class="inline-flex bg-white p-1 rounded-full shadow-sm">
+                    <button class="project-filter px-6 py-2 !rounded-full text-sm font-medium bg-primary text-white whitespace-nowrap" data-filter="all">All</button>
+                    <button class="project-filter px-6 py-2 !rounded-full text-sm font-medium text-gray-700 hover:text-primary whitespace-nowrap" data-filter="web">Web Apps</button>
+                    <button class="project-filter px-6 py-2 !rounded-full text-sm font-medium text-gray-700 hover:text-primary whitespace-nowrap" data-filter="mobile">Mobile</button>
+                    <button class="project-filter px-6 py-2 !rounded-full text-sm font-medium text-gray-700 hover:text-primary whitespace-nowrap" data-filter="ui">UI Design</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="web">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://imagizer.imageshack.com/img924/9589/Ywmnhj.jpg" alt="E-commerce Platform" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Dynamic AES Encryption And Blockchain 
+                            Key Management: A Novel Solution For 
+                            Cloud Data Security</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">AWS </span>
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Blockchain</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full"></span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Developed an advanced cloud data security model combining dynamic AES encryption and blockchain-based key management.
+
+                            Focused on mitigating risks associated with traditional key storage and static encryption methods.
+                            
+                            </p>
+                        <a href="https://github.com/Balaji-droid/Dynamic-AES-Encryption-And-Blockchain-Key-Management-A-Novel-Solution-For-Cloud-Data-Security" class="text-primary font-medium flex items-center hover:underline">
+                            View Project
+                            <i class="ri-arrow-right-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="mobile">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://imagizer.imageshack.com/img923/7042/a5jg5M.jpg" alt="Calculator App" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Calculator App</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">python</span>
+                            <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">CSS</span>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full"></span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Built a Python-based calculator application supporting both basic and scientific operations, designed with a simple GUI for ease of use.</p>
+                        <a href="https://github.com/Balaji-droid/Calculator-App" class="text-primary font-medium flex items-center hover:underline">
+                            View Project
+                            <i class="ri-arrow-right-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="ui">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://imagizer.imageshack.com/img923/4493/Jjylvx.jpg" alt="Analytics Dashboard" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2"> Real-Time Face Recognition System Using Python</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Html</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">CSS</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Python</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Developed a real-time face recognition system using Python, leveraging computer vision techniques to detect and recognize faces through a webcam or image input.</p>
+                        <a href="https://github.com/Balaji-droid/Real-Time-Face-Recognition-System-Using-Python" class="text-primary font-medium flex items-center hover:underline">
+                            View Project
+                            <i class="ri-arrow-right-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="web">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://imagizer.imageshack.com/img923/5362/cwoeZY.jpg" alt="Affordable Electronic Drum Kit Using Arduino Uno" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Affordable Electronic Drum Kit Using Arduino Uno</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Arduino Uno</span>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full"></span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Developed a low-cost, beginner-friendly electronic drum kit using an Arduino Uno and Fusio (force) sensors, designed for music enthusiasts who cannot afford commercial electronic drum sets.</p>
+                        <a href="#" class="text-primary font-medium flex items-center hover:underline">
+                            View Project
+                            <i class="ri-arrow-right-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- Project 5 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="mobile">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://imagizer.imageshack.com/img924/5346/HUHO1O.jpg" alt="Classic Snake Game Using Python and Pygame" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Classic Snake Game Using Python and Pygame</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">python</span>
+                            <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">Html</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">CSS</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">
+                            Created a fun and interactive version of the classic Snake Game using Python and the Pygame library, designed to improve logic-building and game development skills.</p>
+                        <a href="#" class="text-primary font-medium flex items-center hover:underline">
+                            View Project
+                            <i class="ri-arrow-right-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="ui">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://imagizer.imageshack.com/img922/3318/SwqdGU.jpg" alt="Customer Relationship Management (CRM) System Using Python" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Customer Relationship Management (CRM) System Using Python</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full"> MySQL)</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">AWS</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Developed a CRM system to manage and track customer information, interactions, and service history, helping businesses improve customer engagement and support..</p>
+                        <a href="https://github.com/Balaji-droid/Customer-Relationship-Management-CRM-System-Using-Python" class="text-primary font-medium flex items-center hover:underline">
+                            View Project
+                            <i class="ri-arrow-right-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button id="load-more" class="bg-white border-2 border-primary text-primary px-8 py-3 !rounded-button font-medium hover:bg-primary hover:text-white transition-all whitespace-nowrap">Load More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-poppins">Skills & Expertise</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-8"></div>
+                <p class="text-gray-700 max-w-2xl mx-auto">I've worked with a variety of technologies in the web development world.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Frontend Skills -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4">
+                            <i class="ri-code-s-slash-line text-primary ri-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Frontend Development</h3>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">HTML</span>
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">CSS</span>
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">JavaScript</span>
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">React</span>
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Angular</span>
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Backend Skills -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4">
+                            <i class="ri-server-line text-primary ri-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Cloud</h3>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Cloud Practitioner</span>
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Serverless</span>
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Linux
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">AWS services</span>
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Cloud Administrator</span>
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools & Others -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4">
+                            <i class="ri-tools-line text-primary ri-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Tools & Others</h3>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Git & GitHub</span>
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Webflow</span>
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Figma</span>
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Wix</span>
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Canva</span>
+                                <span class="text-gray-600"></span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 0%" data-width="70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Soft Skills -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center font-poppins">Soft Skills</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="bg-primary bg-opacity-10 text-primary px-6 py-3 rounded-full text-sm font-medium">Problem Solving</span>
+                    <span class="bg-secondary bg-opacity-10 text-secondary px-6 py-3 rounded-full text-sm font-medium">Team Collaboration</span>
+                    <span class="bg-blue-100 text-blue-800 px-6 py-3 rounded-full text-sm font-medium">Communication</span>
+                    <span class="bg-green-100 text-green-800 px-6 py-3 rounded-full text-sm font-medium">Time Management</span>
+                    <span class="bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-medium">Adaptability</span>
+                    <span class="bg-purple-100 text-purple-800 px-6 py-3 rounded-full text-sm font-medium">Creativity</span>
+                    <span class="bg-red-100 text-red-800 px-6 py-3 rounded-full text-sm font-medium">Critical Thinking</span>
+                    <span class="bg-indigo-100 text-indigo-800 px-6 py-3 rounded-full text-sm font-medium">Attention to Detail</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-poppins">Get In Touch</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-8"></div>
+                <p class="text-gray-700 max-w-2xl mx-auto">Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-5">
+                        <div class="md:col-span-2 bg-primary p-8 text-white">
+                            <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 rounded-full mr-4">
+                                        <i class="ri-map-pin-line text-white ri-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Location</h4>
+                                        <p>Chennai, Tamil Nadu,
+                                            India</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 rounded-full mr-4">
+                                        <i class="ri-mail-line text-white ri-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Email</h4>
+                                        <p>balajikannan543@gmail.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 rounded-full mr-4">
+                                        <i class="ri-phone-line text-white ri-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Phone</h4>
+                                        <p>91+9345763528</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-12">
+                                <h4 class="font-semibold mb-4">Connect with me</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all">
+                                        <i class="ri-linkedin-fill text-white"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all">
+                                        <i class="ri-github-fill text-white"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all">
+                                        <i class="ri-twitter-fill text-white"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all">
+                                        <i class="ri-dribbble-fill text-white"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="md:col-span-3 p-8">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Send Me a Message</h3>
+                            
+                            <form id="contact-form">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                                        <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Balaji Kamalakannan" required>
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Your Email</label>
+                                        <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="balajikannan543@gmail.com" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                                    <div class="relative">
+                                        <select id="subject" name="subject" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none pr-8">
+                                            <option value="" disabled selected>Select a subject</option>
+                                            <option value="project">Project Inquiry</option>
+                                            <option value="job">Job Opportunity</option>
+                                            <option value="collaboration">Collaboration</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                            <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Your Message</label>
+                                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="How can I help you?" required></textarea>
+                                </div>
+                                
+                                <div class="flex items-center mb-6">
+                                    <div id="privacy-checkbox" class="custom-checkbox mr-3"></div>
+                                    <label for="privacy-checkbox" class="text-sm text-gray-700">I agree to the privacy policy and terms of service</label>
+                                </div>
+                                
+                                <button type="submit" class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-all whitespace-nowrap">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <a href="#home" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">Balaji</a>
+                    <p class="text-gray-400 mb-6 max-w-md">Creating elegant, responsive, and user-friendly web experiences is my passion. Let's build something amazing together.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon text-gray-400 hover:text-white">
+                            <i class="ri-linkedin-fill ri-lg"></i>
+                        </a>
+                        <a href="#" class="social-icon text-gray-400 hover:text-white">
+                            <i class="ri-github-fill ri-lg"></i>
+                        </a>
+                        <a href="#" class="social-icon text-gray-400 hover:text-white">
+                            <i class="ri-twitter-fill ri-lg"></i>
+                        </a>
+                        <a href="#" class="social-icon text-gray-400 hover:text-white">
+                            <i class="ri-dribbble-fill ri-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="#skills" class="text-gray-400 hover:text-white transition-colors">Skills</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to receive updates and news.</p>
+                    <form id="newsletter-form" class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full bg-gray-800 border-none rounded-l focus:outline-none focus:ring-2 focus:ring-primary">
+                        <button type="submit" class="bg-primary text-white px-4 py-2 !rounded-r-button font-medium hover:bg-opacity-90 transition-all whitespace-nowrap">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2025 Balaji Kamalakannan. All rights reserved.</p>
+                <p class="text-gray-400 text-sm mt-4 md:mt-0">Designed & Built with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-opacity-90 transition-all">
+        <i class="ri-arrow-up-line ri-lg"></i>
+    </button>
+
+    <!-- Navigation Script -->
+    <script id="navigation-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const header = document.querySelector('header');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            // Mobile menu toggle
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('shadow-md');
+                    header.classList.remove('bg-opacity-90');
+                    header.classList.add('bg-opacity-95');
+                } else {
+                    header.classList.remove('shadow-md');
+                    header.classList.remove('bg-opacity-95');
+                    header.classList.add('bg-opacity-90');
+                }
+            });
+            
+            // Active link highlighting
+            function setActiveLink() {
+                const sections = document.querySelectorAll('section');
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', setActiveLink);
+            setActiveLink();
+        });
+    </script>
+
+    <!-- Typewriter Effect Script -->
+    <script id="typewriter-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const typewriterElement = document.querySelector('.typewriter');
+            const text = "AWS Certified Cloud Practitioner | Aspiring IT Professional";
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < text.length) {
+                    typewriterElement.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+            
+            // Clear the element first
+            typewriterElement.textContent = '';
+            // Start typing
+            typeWriter();
+        });
+    </script>
+
+    <!-- Project Filter Script -->
+    <script id="project-filter-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.project-filter');
+            const projectCards = document.querySelectorAll('.project-card');
+            const loadMoreButton = document.getElementById('load-more');
+            
+            // Filter projects
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('bg-primary', 'text-white');
+                        btn.classList.add('text-gray-700');
+                    });
+                    this.classList.add('bg-primary', 'text-white');
+                    this.classList.remove('text-gray-700');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Load more projects (simulation)
+            loadMoreButton.addEventListener('click', function() {
+                this.innerHTML = '<i class="ri-loader-4-line ri-spin"></i> Loading...';
+                
+                // Simulate loading delay
+                setTimeout(() => {
+                    this.innerHTML = 'No More Projects';
+                    this.disabled = true;
+                    this.classList.add('opacity-50', 'cursor-not-allowed');
+                }, 1500);
+            });
+        });
+    </script>
+
+    <!-- Skills Animation Script -->
+    <script id="skills-animation-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            function animateSkills() {
+                skillBars.forEach(bar => {
+                    const targetWidth = bar.getAttribute('data-width');
+                    bar.style.width = targetWidth;
+                });
+            }
+            
+            // Animate on scroll
+            const skillsSection = document.getElementById('skills');
+            
+            function checkIfInView() {
+                const rect = skillsSection.getBoundingClientRect();
+                const isInView = (
+                    rect.top >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+                );
+                
+                if (isInView) {
+                    animateSkills();
+                    window.removeEventListener('scroll', checkIfInView);
+                }
+            }
+            
+            window.addEventListener('scroll', checkIfInView);
+            checkIfInView(); // Check on load
+        });
+    </script>
+
+    <!-- Counter Animation Script -->
+    <script id="counter-animation-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const counters = document.querySelectorAll('.counter');
+            
+            function animateCounter(counter) {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000; // ms
+                const step = target / (duration / 16); // 60fps
+                
+                let current = 0;
+                const timer = setInterval(() => {
+                    current += step;
+                    counter.textContent = Math.floor(current);
+                    
+                    if (current >= target) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    }
+                }, 16);
+            }
+            
+            // Animate on scroll
+            const aboutSection = document.getElementById('about');
+            
+            function checkIfInView() {
+                const rect = aboutSection.getBoundingClientRect();
+                const isInView = (
+                    rect.top >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+                );
+                
+                if (isInView) {
+                    counters.forEach(animateCounter);
+                    window.removeEventListener('scroll', checkIfInView);
+                }
+            }
+            
+            window.addEventListener('scroll', checkIfInView);
+            checkIfInView(); // Check on load
+        });
+    </script>
+
+    <!-- Form Elements Script -->
+    <script id="form-elements-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom checkbox
+            const privacyCheckbox = document.getElementById('privacy-checkbox');
+            privacyCheckbox.addEventListener('click', function() {
+                this.classList.toggle('checked');
+            });
+            
+            // Contact form submission
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate checkbox
+                if (!privacyCheckbox.classList.contains('checked')) {
+                    alert('Please agree to the privacy policy and terms of service.');
+                    return;
+                }
+                
+                // Simulate form submission
+                const submitButton = this.querySelector('button[type="submit"]');
+                submitButton.innerHTML = '<i class="ri-loader-4-line ri-spin"></i> Sending...';
+                submitButton.disabled = true;
+                
+                setTimeout(() => {
+                    submitButton.innerHTML = 'Message Sent!';
+                    submitButton.classList.add('bg-green-600');
+                    
+                    // Reset form after delay
+                    setTimeout(() => {
+                        contactForm.reset();
+                        privacyCheckbox.classList.remove('checked');
+                        submitButton.innerHTML = 'Send Message';
+                        submitButton.classList.remove('bg-green-600');
+                        submitButton.disabled = false;
+                    }, 2000);
+                }, 1500);
+            });
+            
+            // Newsletter form
+            const newsletterForm = document.getElementById('newsletter-form');
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const emailInput = this.querySelector('input[type="email"]');
+                const submitButton = this.querySelector('button[type="submit"]');
+                
+                if (!emailInput.value) {
+                    emailInput.focus();
+                    return;
+                }
+                
+                submitButton.innerHTML = '<i class="ri-loader-4-line ri-spin"></i>';
+                submitButton.disabled = true;
+                
+                setTimeout(() => {
+                    submitButton.innerHTML = 'Subscribed!';
+                    
+                    // Reset form after delay
+                    setTimeout(() => {
+                        newsletterForm.reset();
+                        submitButton.innerHTML = 'Subscribe';
+                        submitButton.disabled = false;
+                    }, 2000);
+                }, 1500);
+            });
+        });
+    </script>
+
+    <!-- Back to Top Script -->
+    <script id="back-to-top-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
